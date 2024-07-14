@@ -217,11 +217,9 @@ services:
   was:
     depends_on:
       - kibana
-    env_file: .env
     build:
       context: .
       dockerfile: dockerfile
-    command: gunicorn app:app --bind 0.0.0.0:8080
     volumes:
       - certs:/usr/share/certs
     ports:
@@ -232,6 +230,7 @@ services:
     build: ./setup/nginx
     ports:
       - 80:80
+      - 443:443
     depends_on:
       - was
 

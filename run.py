@@ -1,13 +1,9 @@
-# flask
-from app import create_app
-
-
-app = create_app()
+import uvicorn
 
 
 # test app run
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=8080)
+    uvicorn.run("app:app", host="0.0.0.0", port=8080, reload=True)
 
     # Path to the certificate and key files
     # context = ('cert.pem', 'key.pem')

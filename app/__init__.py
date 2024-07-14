@@ -1,25 +1,16 @@
-# flask app
-from flask import Flask
-from flask import Blueprint
-from flask_restx import Api
-from werkzeug.middleware.proxy_fix import ProxyFix
+from fastapi import FastAPI
+from app.admin import container_controller
+from app.alert import email_controller
+from app.tool import calc_controller
+from app.markdown import blog_controller as markdown_blog
+from app.analysis import blog_controller as analysis_blog
+from app.stat import blog_controller as stat_blog
 
-# get blueprint
-from app.admin.container import container_ns
+app = FastAPI()
 
-
-def create_app():
-    # app init
-    app = Flask(__name__)
-    app.wsgi_app = ProxyFix(app.wsgi_app)
-
-    api = Api(app, version='1.0', title='BloGuide API')
-
-    # namesapces
-    api_bp_admin = Blueprint('api', __name__, url_prefix='/admin')
-    api.add_namespace(container_ns)
-
-    # blueprint register
-    app.register_blueprint(api_bp_admin)
-
-    return app
+app.include_router(container_controller.router, prefix="/admin/container", tags=["Admin Container"])
+app.include_router(email_controller.router, prefix="/alert/email", tags=["Alert Email"])
+app.include_router(calc_controller.router, prefix="/tool/calc", tags=["Tool Calc"])
+app.include_router(markdown_blog.router, prefix="/markdown/blog", tags=["Markdown Blog"])
+app.include_router(analysis_blog.router, prefix="/analysis/blog", tags=["Analysis Blog"])
+app.include_router(stat_blog.router, prefix="/stat/blog", tags=["Stat Blog"])
