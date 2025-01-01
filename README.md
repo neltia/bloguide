@@ -28,3 +28,17 @@ Target Users:
 - Blog administrators.
 - Users requiring blog content analysis.
 - Content marketing professionals.
+
+## Getting Started
+- python 3.10+
+- FastAPI
+- Uvicorn (ASGI server)
+- Other dependencies as listed in `requirements.txt`
+
+### Installation
+- virtual environment:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    pip install -r requirements.txt
+    ```

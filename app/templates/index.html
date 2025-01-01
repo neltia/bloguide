@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-between">
+
+    <!-- Header -->
+    <header class="w-full bg-white shadow p-4 flex justify-center">
+        <div class="w-11/12 max-w-4xl text-center">
+            <div class="h-10 bg-gray-200 rounded flex items-center justify-center">
+                <!-- Logo Placeholder -->
+                <span class="text-gray-500">로고</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col items-center">
+        <!-- Search Bar -->
+        <div class="w-11/12 max-w-2xl">
+            <div class="flex items-center border border-gray-300 rounded-full px-4 py-2 shadow-sm bg-white">
+                <input
+                    id="search-input"
+                    type="text"
+                    placeholder="검색어를 입력해 주세요."
+                    class="w-full outline-none text-gray-600 placeholder-gray-400"
+                    onkeydown="handleKeyPress(event)"
+                />
+                <button
+                    class="ml-2 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-1 px-3 rounded-full"
+                    onclick="search()"
+                >
+                    <!-- Search Icon from Heroicons CDN -->
+                    <i class="fa fa-magnifying-glass text-gray-700 text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tag Widgets -->
+        <div class="mt-8 flex space-x-4">
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-4 rounded-full shadow">
+                #최근검색
+            </button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-4 rounded-full shadow">
+                #자주찾는
+            </button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-4 rounded-full shadow">
+                #인기있는
+            </button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-4 rounded-full shadow">
+                #추천하는
+            </button>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="mt-10 w-11/12 max-w-2xl">
+            <!-- Search results will be dynamically rendered here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-4 text-center text-gray-500 text-sm">
+        @Neltia
+    </footer>
+
+    <!-- Import JavaScript -->
+    <script type="module" src="/static/js/search.js"></script>
+    <script type="module">
+        import { handleKeyPress, search } from '/static/js/search.js';
+        window.handleKeyPress = handleKeyPress;
+        window.search = search;
+    </script>
+</body>
+</html>
