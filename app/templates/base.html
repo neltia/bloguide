@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloGuide</title>
+    <!-- tailwind css -->
+    <link rel="stylesheet" href="{{url_for('static', path='css/app.css')}}"/>
+    <!-- tailwind js -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <!-- font-awesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    {% endblock %}
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <!-- Container -->
+    <div id="content" class="container mx-auto p-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+<footer class="absolute bottom-4 text-sm text-gray-500 dark:text-gray-400 items-start">
+    <p>&copy; 2025 Blog Guide. All rights reserved.</p>
+</footer>
+</html>

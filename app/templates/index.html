@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Centered Form</title>
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-  <link rel="stylesheet" href="{{url_for('static', path='css/app.css')}}"/>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-  <!-- font-awesome icon -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-</head>
-
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center mt-[25vh]">
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex flex-col items-center mt-[25vh]">
 
     <!-- Main Container -->
     <div class="text-center mt-5">
         <h1 class="mb-6 text-3xl font-bold text-cyan-400">BloGuide</h1>
-    <!-- Search form -->
     </div>
     <!-- Main Container -->
 
@@ -31,10 +18,6 @@
         />
         </div>
     </form>
-
-<!-- Footer -->
-<footer class="absolute bottom-4 text-sm text-gray-500 dark:text-gray-400 items-start">
-<p>&copy; 2025 Blog Guide. All rights reserved.</p>
-</footer>
-</body>
-</html>
+    <!-- Search form -->
+</div>
+{% endblock %}
