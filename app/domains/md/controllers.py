@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from app.domains.md.service import MarkdownService
-# from app.domains.md.models import MarkdownFile
+from app.domains.md.models import MarkdownCreateRequest
 from app.common.response_model import ResponseResult
 from app.infrastructure.db.get_conn import get_elasticsearch_client
 
@@ -18,6 +18,23 @@ async def startup_event():
 @router.on_event("shutdown")
 async def shutdown_event():
     await get_elasticsearch_client().close()
+
+
+# markdown manual upload
+# - input data with editor
+@router.post("/", response_model=ResponseResult)
+async def creat_markdown_manual(input_data: MarkdownCreateRequest):
+    post_data = input_data.model_dump()
+    print(post_data)
+    return await service.create_markdown(post_data)
+
+
+# markdown file upload
+# <to-do> input data with file upload as zip
+
+
+# markdown auto upload
+# <to-do> migrate blog url
 
 
 # get markdown data

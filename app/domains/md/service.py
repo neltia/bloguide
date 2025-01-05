@@ -13,13 +13,13 @@ class MarkdownService:
         self.index = "blog_posts"
 
     """ 마크다운 생성 """
-    async def create_markdown(self, input_data: dict):
-        title = input_data["title"]
-        content = input_data["content"]
-        tags_manual = input_data["tag"]["manual"]
+    async def create_markdown(self, post_data: dict):
+        title = post_data["title"]
+        content = post_data["content"]
+        tags_manual = post_data["tags"]
 
         # 전처리 데이터 생성
-        content_parsed = await self.preprocess_content(content)
+        content_parsed = content
         metadata = await self.generate_metadata(content)
 
         # 저장할 데이터 구성
@@ -37,7 +37,9 @@ class MarkdownService:
         }
 
         # Elasticsearch에 저장
-        return await self.es.create_document(index=self.index, document=markdown_data)
+        response = await self.es.create_document(index=self.index, document=markdown_data)
+        data = {"doc_id": response["_id"]}
+        return create_response(result_code=status.HTTP_200_OK, data=data)
 
     # 콘텐츠 전처리 (예: Nori 분석 결과 결합)
     async def preprocess_content(self, content: str) -> str:
