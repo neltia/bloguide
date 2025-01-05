@@ -13,4 +13,4 @@ def create_response(result_code: int, data: Any = None, result_msg: str = None) 
         result_msg = HTTPStatus(result_code).phrase if result_code in HTTPStatus._value2member_map_ else "Unknown Status"
 
     response = ResponseResult(result_code=result_code, result_msg=result_msg, data=data)
-    return JSONResponse(status_code=200, content=response.model_dump())
+    return JSONResponse(status_code=200, content=response.model_dump(exclude_none=True))

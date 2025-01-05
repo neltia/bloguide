@@ -1,5 +1,6 @@
 import os
 from pydantic_settings import BaseSettings
+from pydantic import Field
 
 
 class Settings(BaseSettings):
@@ -9,7 +10,12 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api"
 
     # Database settings
-    # <to-do> ES
+    ES_HOST: str = Field(default="localhost", env="ES_HOST")
+    ES_PORT: int = Field(default=9200, env="ES_PORT")
+    ES_SECURE: bool = Field(default=True, env="ES_SECURE")
+
+    ES_USER: str = Field(default=None, env="ES_USER")
+    ES_PW: str = Field(default=None, env="ES_PW")
 
     # Security settings
     SECRET_KEY: str = os.getenv("SECRET_KEY", "your-secret-key")

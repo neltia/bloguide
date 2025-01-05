@@ -31,6 +31,7 @@ async def lifespan(app: FastAPI):
     process.terminate()  # We must terminate the compiler on shutdown to
     # prevent multiple compilers running in development mode or when watch is enabled.
 
+
 # app instance
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -69,20 +70,20 @@ app.include_router(api_router, prefix=settings.API_PREFIX)
 
 
 # root url request
-@app.get("/", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def root(request: Request):
     return templates.TemplateResponse(
         "index.html", {"request": request, "title": settings.PROJECT_NAME}
     )
 
 
-# DB Connection init
+# app init
 @app.on_event("startup")
 async def startup_event():
     print("Application started")
 
 
-# DB Connectoin close
+# app shutdown
 @app.on_event("shutdown")
 async def shutdown_event():
     print("Application shutting down")
