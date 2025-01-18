@@ -1,5 +1,5 @@
 from typing import Any, Optional
-from app.infrastructure.db.get_conn import get_elasticsearch_client
+from api.infrastructure.db.get_conn import get_elasticsearch_client
 from elasticsearch.exceptions import NotFoundError
 
 es_client = get_elasticsearch_client()

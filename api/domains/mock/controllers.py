@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.domains.mock.service import BoardSearvice
-from app.common.response_model import ResponseResult
+from api.domains.mock.service import BoardSearvice
+from api.common.response_model import ResponseResult
 
 router = APIRouter()
 service = BoardSearvice()

@@ -1,7 +1,7 @@
 from fastapi import HTTPException, Request
 from fastapi.responses import JSONResponse
 from http import HTTPStatus
-from app.common.response_model import ResponseResult
+from api.common.response_model import ResponseResult
 
 
 # HTTPException to ensure responses match the ResponseResult format

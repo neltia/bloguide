@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from app.domains.mock.controllers import router as mock_router
-from app.domains.md.controllers import router as markdown_router
+from api.domains.mock.controllers import router as mock_router
+from api.domains.md.controllers import router as markdown_router
 
 api_router = APIRouter()
 

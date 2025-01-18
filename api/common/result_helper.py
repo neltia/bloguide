@@ -1,5 +1,5 @@
 from fastapi.responses import JSONResponse
-from app.common.response_model import ResponseResult
+from api.common.response_model import ResponseResult
 from typing import Any
 from http import HTTPStatus
 

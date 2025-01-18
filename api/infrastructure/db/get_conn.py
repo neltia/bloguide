@@ -1,4 +1,4 @@
-from app.core.config import settings
+from api.core.config import settings
 from elasticsearch import AsyncElasticsearch
 
 

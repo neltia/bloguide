@@ -1,7 +1,7 @@
 from fastapi import HTTPException, status
-from app.utils.es_utils import AsyncElasticsearchUtils
-from app.common.response_model import ResponseResult
-from app.common.result_helper import create_response
+from api.utils.es_utils import AsyncElasticsearchUtils
+from api.common.response_model import ResponseResult
+from api.common.result_helper import create_response
 
 from datetime import datetime
 from hashlib import sha256

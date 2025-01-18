@@ -1,6 +1,6 @@
 from fastapi import HTTPException, status
-from app.common.response_model import ResponseResult
-from app.common.result_helper import create_response
+from api.common.response_model import ResponseResult
+from api.common.result_helper import create_response
 
 
 class BoardSearvice:
